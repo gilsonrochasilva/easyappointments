@@ -227,9 +227,9 @@ window.FrontendBook = window.FrontendBook || {};
             });
 
             // Add the "Any Provider" entry.
-            if ($('#select-provider option').length >= 1) {
-                $('#select-provider').append(new Option('- ' + EALang.any_provider + ' -', 'any-provider'));
-            }
+            // if ($('#select-provider option').length >= 1) {
+            //     $('#select-provider').append(new Option('- ' + EALang.any_provider + ' -', 'any-provider'));
+            // }
 
             FrontendBookApi.getUnavailableDates($('#select-provider').val(), $(this).val(),
                 $('#select-date').datepicker('getDate').toString('yyyy-MM-dd'));
