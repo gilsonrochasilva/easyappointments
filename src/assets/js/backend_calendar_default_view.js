@@ -788,7 +788,8 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                     id: appointment.id,
                     title: appointment.service.name + ' - '
                     + appointment.customer.first_name + ' '
-                    + appointment.customer.last_name,
+                    + appointment.customer.last_name + ' - '
+                    + appointment.customer.cpf,
                     start: moment(appointment.start_datetime),
                     end: moment(appointment.end_datetime),
                     allDay: false,
