@@ -210,6 +210,9 @@
 
                         <div class="frame-content row">
                             <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                    <h4>Dados solicitante</h4>
+                                </div>
                                 <div class="form-group">
                                     <label for="first-name" class="control-label"><?= lang('first_name') ?> *</label>
                                     <input type="text" id="first-name" class="required form-control" maxlength="100" />
@@ -253,10 +256,13 @@
                                     <label for="zip-code" class="control-label"><?= lang('zip_code') ?></label>
                                     <input type="text" id="zip-code" class="form-control" maxlength="120" />
                                 </div>
-                                <<div class="form-group">
+                                <div class="form-group">
                                     <label for="notes" class="control-label"><?= lang('notes') ?></label>
                                     <textarea id="notes" maxlength="500" class="form-control" rows="3"></textarea>
                                 </div> -->
+                                <div class="form-group">
+                                    <h4>Informações do Veículo</h4>
+                                </div>
                                 <div class="form-group">
                                     <label for="placa" class="control-label"><?= lang('placa') ?></label>
                                     <input type="text" id="placa" class="form-control" maxlength="120" />
