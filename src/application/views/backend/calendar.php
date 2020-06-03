@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?= asset_url('/assets/ext/jquery-fullcalendar/fullcalendar.css') ?>">
+<link href="<?= asset_url('/assets/ext/jquery-fullcalendar/fullcalendar.print.css') ?>" rel="stylesheet" type="text/css" media="print" />
 
 <script src="<?= asset_url('assets/ext/moment/moment.min.js') ?>"></script>
 <script src="<?= asset_url('assets/ext/jquery-fullcalendar/fullcalendar.js') ?>"></script>
@@ -74,6 +75,11 @@
                     <?= lang('unavailable') ?>
                 </button>
             <?php endif ?>
+
+            <button id="print-appointments" class="btn btn-default" title="Imprimir">
+                <span class="glyphicon glyphicon-print"></span>
+                Imprimir
+            </button>
 
             <button id="reload-appointments" class="btn btn-default" title="<?= lang('reload_appointments_hint') ?>">
                 <span class="glyphicon glyphicon-repeat"></span>

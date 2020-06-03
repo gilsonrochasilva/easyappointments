@@ -34,6 +34,10 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
     function _bindEventHandlers() {
         var $calendarPage = $('#calendar-page');
 
+        $('#print-appointments').click(function () {
+            window.print();
+        });
+
         /**
          * Event: Reload Button "Click"
          *
