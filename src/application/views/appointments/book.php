@@ -218,13 +218,21 @@
                                     <label for="last-name" class="control-label"><?= lang('last_name') ?> *</label>
                                     <input type="text" id="last-name" class="required form-control" maxlength="120" />
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="email" class="control-label"><?= lang('email') ?> *</label>
                                     <input type="text" id="email" class="required form-control" maxlength="120" />
                                 </div>
                                 <div class="form-group">
                                     <label for="phone-number" class="control-label"><?= lang('phone_number') ?> *</label>
                                     <input type="text" id="phone-number" class="required form-control" maxlength="60" />
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="email" class="control-label"><?= lang('email') ?></label>
+                                    <input type="text" id="email" class="form-control" maxlength="120" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone-number" class="control-label"><?= lang('phone_number') ?></label>
+                                    <input type="text" id="phone-number" class="form-control" maxlength="60" />
                                 </div>
                             </div>
 

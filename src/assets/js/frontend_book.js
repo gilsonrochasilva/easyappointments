@@ -277,7 +277,6 @@ window.FrontendBook = window.FrontendBook || {};
                         var newTermsAndConditionsConsent = {
                             first_name: $('#first-name').val(),
                             last_name: $('#last-name').val(),
-                            email: $('#email').val(),
                             type: 'terms-and-conditions'
                         };
 
@@ -292,7 +291,6 @@ window.FrontendBook = window.FrontendBook || {};
                         var newPrivacyPolicyConsent = {
                             first_name: $('#first-name').val(),
                             last_name: $('#last-name').val(),
-                            email: $('#email').val(),
                             type: 'privacy-policy'
                         };
 
@@ -469,10 +467,10 @@ window.FrontendBook = window.FrontendBook || {};
 
 
             // Validate email address.
-            if (!GeneralFunctions.validateEmail($('#email').val())) {
-                $('#email').parents('.form-group').addClass('has-error');
-                throw EALang.invalid_email;
-            }
+            // if (!GeneralFunctions.validateEmail($('#email').val())) {
+            //     $('#email').parents('.form-group').addClass('has-error');
+            //     throw EALang.invalid_email;
+            // }
 
             return true;
         } catch (exc) {
