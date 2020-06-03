@@ -130,6 +130,9 @@ CREATE TABLE IF NOT EXISTS `ea_users` (
     `zip_code` VARCHAR(64),
     `notes` TEXT,
     `id_roles` INT(11) NOT NULL,
+    `cpf` VARCHAR(100),
+    `placa` VARCHAR(100),
+    `renavam` VARCHAR(100),
     PRIMARY KEY (`id`),
     KEY `id_roles` (`id_roles`)
 )
