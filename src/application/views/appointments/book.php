@@ -235,8 +235,8 @@
                                     <input type="text" id="phone-number" class="form-control" maxlength="60" />
                                 </div> -->
                                 <div class="form-group">
-                                    <label for="cpf" class="control-label"><?= lang('cpf') ?></label>
-                                    <input type="text" id="cpf" class="form-control" maxlength="120" />
+                                    <label for="cpf" class="control-label"><?= lang('cpf') ?> *</label>
+                                    <input type="text" id="cpf" class="required form-control" maxlength="120" />
                                 </div>
                             </div>
 
