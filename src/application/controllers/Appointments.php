@@ -568,12 +568,12 @@ class Appointments extends CI_Controller {
                 $this->load->library('ics_file');
                 $ics_stream = $this->ics_file->get_stream($appointment, $service, $provider, $customer);
 
-                if ($send_customer === TRUE)
-                {
-                    $email->sendAppointmentDetails($appointment, $provider,
-                        $service, $customer, $company_settings, $customer_title,
-                        $customer_message, $customer_link, new Email($customer['email']), new Text($ics_stream));
-                }
+                // if ($send_customer === TRUE)
+                // {
+                //     $email->sendAppointmentDetails($appointment, $provider,
+                //         $service, $customer, $company_settings, $customer_title,
+                //         $customer_message, $customer_link, new Email($customer['email']), new Text($ics_stream));
+                // }
 
                 $send_provider = filter_var($this->providers_model->get_setting('notifications', $provider['id']),
                     FILTER_VALIDATE_BOOLEAN);

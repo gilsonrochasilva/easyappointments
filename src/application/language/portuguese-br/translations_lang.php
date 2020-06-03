@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 // Portuguese BR
 $lang['page_title'] = 'Agendar Horário';
-$lang['step_one_title'] = 'Selecione o serviço e o atendente';
+$lang['step_one_title'] = 'Selecione o serviço e a unidade';
 $lang['select_service'] = 'Selecione o serviço';
-$lang['select_provider'] = 'Selecione o atendente';
+$lang['select_provider'] = 'Selecione a unidade';
 $lang['duration'] = 'Duração';
 $lang['minutes'] = 'Minutos';
 $lang['price'] = 'Valor';
@@ -118,7 +118,7 @@ $lang['no_category'] = 'Sem Categoria';
 $lang['description'] = 'Descrição';
 $lang['categories'] = 'Categorias';
 $lang['admins'] = 'Administradores';
-$lang['providers'] = 'Atendentes';
+$lang['providers'] = 'Unidades';
 $lang['secretaries'] = 'Secretários';
 $lang['mobile_number'] = 'Celular ';
 $lang['state'] = 'Estado';
@@ -297,3 +297,6 @@ $lang['read_and_agree_to_privacy_policy'] = 'I have read and agree to the {$link
 $lang['delete_personal_information_hint'] = 'Delete all personal information from the system.';
 $lang['delete_personal_information'] = 'Delete Personal Information';
 $lang['delete_personal_information_prompt'] = 'Are you sure that you want to delete your personal information? This action cannot be undone.';
+$lang['cpf'] = 'CPF';
+$lang['placa'] = 'PLACA';
+$lang['renavam'] = 'REVAVAM';

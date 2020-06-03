@@ -66,11 +66,31 @@ class Customers_Model extends CI_Model {
      *
      * @throws Exception If customer email property is missing.
      */
+    // public function exists($customer)
+    // {
+    //     if ( ! isset($customer['email']))
+    //     {
+    //         throw new Exception('Customer\'s email is not provided.');
+    //     }
+
+    //     // This method shouldn't depend on another method of this class.
+    //     $num_rows = $this->db
+    //         ->select('*')
+    //         ->from('ea_users')
+    //         ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
+    //         ->where('ea_users.email', $customer['email'])
+    //         ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
+    //         ->get()->num_rows();
+
+    //     return ($num_rows > 0) ? TRUE : FALSE;
+    // }
+
+
     public function exists($customer)
     {
-        if ( ! isset($customer['email']))
+        if ( ! isset($customer['cpf']))
         {
-            throw new Exception('Customer\'s email is not provided.');
+            throw new Exception('Customer\'s cpf is not provided.');
         }
 
         // This method shouldn't depend on another method of this class.
@@ -78,12 +98,13 @@ class Customers_Model extends CI_Model {
             ->select('*')
             ->from('ea_users')
             ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
-            ->where('ea_users.email', $customer['email'])
+            ->where('ea_users.cpf', $customer['cpf'])
             ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
             ->get()->num_rows();
 
         return ($num_rows > 0) ? TRUE : FALSE;
     }
+
 
     /**
      * Insert a new customer record to the database.
@@ -161,11 +182,36 @@ class Customers_Model extends CI_Model {
      *
      * @throws Exception If customer record does not exist.
      */
+    // public function find_record_id($customer)
+    // {
+    //     if ( ! isset($customer['email']))
+    //     {
+    //         throw new Exception('Customer\'s email was not provided: '
+    //             . print_r($customer, TRUE));
+    //     }
+
+    //     // Get customer's role id
+    //     $result = $this->db
+    //         ->select('ea_users.id')
+    //         ->from('ea_users')
+    //         ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
+    //         ->where('ea_users.email', $customer['email'])
+    //         ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
+    //         ->get();
+
+    //     if ($result->num_rows() == 0)
+    //     {
+    //         throw new Exception('Could not find customer record id.');
+    //     }
+
+    //     return $result->row()->id;
+    // }
+
     public function find_record_id($customer)
     {
-        if ( ! isset($customer['email']))
+        if ( ! isset($customer['cpf']))
         {
-            throw new Exception('Customer\'s email was not provided: '
+            throw new Exception('Customer\'s cpf was not provided: '
                 . print_r($customer, TRUE));
         }
 
@@ -174,7 +220,7 @@ class Customers_Model extends CI_Model {
             ->select('ea_users.id')
             ->from('ea_users')
             ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
-            ->where('ea_users.email', $customer['email'])
+            ->where('ea_users.cpf', $customer['cpf'])
             ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
             ->get();
 
@@ -213,19 +259,21 @@ class Customers_Model extends CI_Model {
         }
         // Validate required fields
         if ( ! isset($customer['last_name'])
-            || ! isset($customer['email'])
-            || ! isset($customer['phone_number']))
+            // || ! isset($customer['email'])
+            //|| ! isset($customer['phone_number'])
+            || ! isset($customer['cpf'])
+            )
         {
             throw new Exception('Not all required fields are provided: '
                 . print_r($customer, TRUE));
         }
 
         // Validate email address
-        if ( ! filter_var($customer['email'], FILTER_VALIDATE_EMAIL))
-        {
-            throw new Exception('Invalid email address provided: '
-                . $customer['email']);
-        }
+        // if ( ! filter_var($customer['email'], FILTER_VALIDATE_EMAIL))
+        // {
+        //     throw new Exception('Invalid email address provided: '
+        //         . $customer['email']);
+        // }
 
         // When inserting a record the email address must be unique.
         $customer_id = (isset($customer['id'])) ? $customer['id'] : '';
@@ -235,7 +283,8 @@ class Customers_Model extends CI_Model {
             ->from('ea_users')
             ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
             ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
-            ->where('ea_users.email', $customer['email'])
+            // ->where('ea_users.email', $customer['email'])
+            ->where('ea_users.cpf', $customer['cpf'])
             ->where('ea_users.id <>', $customer_id)
             ->get()
             ->num_rows();
