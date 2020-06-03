@@ -57,7 +57,7 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                 id_users_provider: $dialog.find('#select-provider').val(),
                 start_datetime: startDatetime,
                 end_datetime: endDatetime,
-                notes: $dialog.find('#appointment-notes').val(),
+                //notes: $dialog.find('#appointment-notes').val(),
                 is_unavailable: false
             };
 
@@ -69,12 +69,15 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
             var customer = {
                 first_name: $dialog.find('#first-name').val(),
                 last_name: $dialog.find('#last-name').val(),
-                email: $dialog.find('#email').val(),
-                phone_number: $dialog.find('#phone-number').val(),
-                address: $dialog.find('#address').val(),
-                city: $dialog.find('#city').val(),
-                zip_code: $dialog.find('#zip-code').val(),
-                notes: $dialog.find('#customer-notes').val()
+                // email: $dialog.find('#email').val(),
+                // phone_number: $dialog.find('#phone-number').val(),
+                // address: $dialog.find('#address').val(),
+                // city: $dialog.find('#city').val(),
+                // zip_code: $dialog.find('#zip-code').val(),
+                // notes: $dialog.find('#customer-notes').val()
+                cpf: $dialog.find('#cpf').val(),
+                placa: $dialog.find('#placa').val(),
+                renavam: $dialog.find('#renavam').val(),
             };
 
             if ($dialog.find('#customer-id').val() !== '') {
@@ -206,12 +209,15 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                     $('#customer-id').val(c.id);
                     $('#first-name').val(c.first_name);
                     $('#last-name').val(c.last_name);
-                    $('#email').val(c.email);
-                    $('#phone-number').val(c.phone_number);
-                    $('#address').val(c.address);
-                    $('#city').val(c.city);
-                    $('#zip-code').val(c.zip_code);
-                    $('#customer-notes').val(c.notes);
+                    // $('#email').val(c.email);
+                    // $('#phone-number').val(c.phone_number);
+                    // $('#address').val(c.address);
+                    // $('#city').val(c.city);
+                    // $('#zip-code').val(c.zip_code);
+                    // $('#customer-notes').val(c.notes);
+                    $('#cpf').val(c.cpf);
+                    $('#placa').val(c.placa);
+                    $('#renavam').val(c.renavam);
                     return false;
                 }
             });
@@ -487,10 +493,10 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
             }
 
             // Check email address.
-            if (!GeneralFunctions.validateEmail($dialog.find('#email').val())) {
-                $dialog.find('#email').closest('.form-group').addClass('has-error');
-                throw EALang.invalid_email;
-            }
+            // if (!GeneralFunctions.validateEmail($dialog.find('#email').val())) {
+            //     $dialog.find('#email').closest('.form-group').addClass('has-error');
+            //     throw EALang.invalid_email;
+            // }
 
             // Check appointment start and end time.
             var start = $('#start-datetime').datetimepicker('getDate');

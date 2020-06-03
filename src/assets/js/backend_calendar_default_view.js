@@ -89,13 +89,16 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                 $dialog.find('#customer-id').val(appointment.id_users_customer);
                 $dialog.find('#first-name').val(customer.first_name);
                 $dialog.find('#last-name').val(customer.last_name);
-                $dialog.find('#email').val(customer.email);
-                $dialog.find('#phone-number').val(customer.phone_number);
-                $dialog.find('#address').val(customer.address);
-                $dialog.find('#city').val(customer.city);
-                $dialog.find('#zip-code').val(customer.zip_code);
-                $dialog.find('#appointment-notes').val(appointment.notes);
-                $dialog.find('#customer-notes').val(customer.notes);
+                // $dialog.find('#email').val(customer.email);
+                // $dialog.find('#phone-number').val(customer.phone_number);
+                // $dialog.find('#address').val(customer.address);
+                // $dialog.find('#city').val(customer.city);
+                // $dialog.find('#zip-code').val(customer.zip_code);
+                // $dialog.find('#appointment-notes').val(appointment.notes);
+                // $dialog.find('#customer-notes').val(customer.notes);
+                $dialog.find('#cpf').val(customer.cpf);
+                $dialog.find('#placa').val(customer.placa);
+                $dialog.find('#renavam').val(customer.renavam);
             } else {
                 var unavailable = lastFocusedEventData.data;
 
