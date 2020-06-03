@@ -522,24 +522,33 @@ window.FrontendBook = window.FrontendBook || {};
         // Customer Details
         var firstName = GeneralFunctions.escapeHtml($('#first-name').val());
         var lastName = GeneralFunctions.escapeHtml($('#last-name').val());
-        var phoneNumber = GeneralFunctions.escapeHtml($('#phone-number').val());
-        var email = GeneralFunctions.escapeHtml($('#email').val());
-        var address = GeneralFunctions.escapeHtml($('#address').val());
-        var city = GeneralFunctions.escapeHtml($('#city').val());
-        var zipCode = GeneralFunctions.escapeHtml($('#zip-code').val());
+        // var phoneNumber = GeneralFunctions.escapeHtml($('#phone-number').val());
+        // var email = GeneralFunctions.escapeHtml($('#email').val());
+        // var address = GeneralFunctions.escapeHtml($('#address').val());
+        // var city = GeneralFunctions.escapeHtml($('#city').val());
+        // var zipCode = GeneralFunctions.escapeHtml($('#zip-code').val());
+        var cpf = GeneralFunctions.escapeHtml($('#cpf').val());
+        var placa = GeneralFunctions.escapeHtml($('#placa').val());
+        var renavam = GeneralFunctions.escapeHtml($('#renavam').val());
 
         html =
             '<h4>' + firstName + ' ' + lastName + '</h4>' +
             '<p>' +
-            EALang.phone + ': ' + phoneNumber +
+            // EALang.phone + ': ' + phoneNumber +
+            // '<br/>' +
+            // EALang.email + ': ' + email +
+            // '<br/>' +
+            // EALang.address + ': ' + address +
+            // '<br/>' +
+            // EALang.city + ': ' + city +
+            // '<br/>' +
+            // EALang.zip_code + ': ' + zipCode +
+            //'<br/>' +
+            EALang.cpf + ': ' + cpf +
             '<br/>' +
-            EALang.email + ': ' + email +
+            EALang.placa + ': ' + placa +
             '<br/>' +
-            EALang.address + ': ' + address +
-            '<br/>' +
-            EALang.city + ': ' + city +
-            '<br/>' +
-            EALang.zip_code + ': ' + zipCode +
+            EALang.renavam + ': ' + renavam +
             '</p>';
 
         $('#customer-details').html(html);
@@ -551,18 +560,21 @@ window.FrontendBook = window.FrontendBook || {};
         postData.customer = {
             last_name: $('#last-name').val(),
             first_name: $('#first-name').val(),
-            email: $('#email').val(),
-            phone_number: $('#phone-number').val(),
-            address: $('#address').val(),
-            city: $('#city').val(),
-            zip_code: $('#zip-code').val()
+            //email: $('#email').val(),
+            //phone_number: $('#phone-number').val(),
+            //address: $('#address').val(),
+            //city: $('#city').val(),
+            //zip_code: $('#zip-code').val(),
+            cpf: $('#cpf').val(),
+            placa: $('#placa').val(),
+            renavam: $('#renavam').val(),
         };
 
         postData.appointment = {
             start_datetime: $('#select-date').datepicker('getDate').toString('yyyy-MM-dd')
             + ' ' + Date.parse($('.selected-hour').text()).toString('HH:mm') + ':00',
             end_datetime: _calcEndDatetime(),
-            notes: $('#notes').val(),
+            //notes: $('#notes').val(),
             is_unavailable: false,
             id_users_provider: $('#select-provider').val(),
             id_services: $('#select-service').val()

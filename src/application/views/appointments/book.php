@@ -225,7 +225,7 @@
                                 <div class="form-group">
                                     <label for="phone-number" class="control-label"><?= lang('phone_number') ?> *</label>
                                     <input type="text" id="phone-number" class="required form-control" maxlength="60" />
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <label for="email" class="control-label"><?= lang('email') ?></label>
                                     <input type="text" id="email" class="form-control" maxlength="120" />
@@ -233,11 +233,15 @@
                                 <div class="form-group">
                                     <label for="phone-number" class="control-label"><?= lang('phone_number') ?></label>
                                     <input type="text" id="phone-number" class="form-control" maxlength="60" />
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="cpf" class="control-label"><?= lang('cpf') ?></label>
+                                    <input type="text" id="cpf" class="form-control" maxlength="120" />
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-6">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="address" class="control-label"><?= lang('address') ?></label>
                                     <input type="text" id="address" class="form-control" maxlength="120" />
                                 </div>
@@ -249,9 +253,17 @@
                                     <label for="zip-code" class="control-label"><?= lang('zip_code') ?></label>
                                     <input type="text" id="zip-code" class="form-control" maxlength="120" />
                                 </div>
-                                <div class="form-group">
+                                <<div class="form-group">
                                     <label for="notes" class="control-label"><?= lang('notes') ?></label>
                                     <textarea id="notes" maxlength="500" class="form-control" rows="3"></textarea>
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="placa" class="control-label"><?= lang('placa') ?></label>
+                                    <input type="text" id="placa" class="form-control" maxlength="120" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="renavam" class="control-label"><?= lang('renavam') ?></label>
+                                    <input type="text" id="renavam" class="form-control" maxlength="120" />
                                 </div>
                             </div>
 
