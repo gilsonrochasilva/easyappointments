@@ -171,10 +171,10 @@ class Backend_api extends CI_Controller {
     {
         try
         {
-            if ($this->privileges[PRIV_APPOINTMENTS]['view'] == FALSE)
-            {
-                throw new Exception('You do not have the required privileges for this task.');
-            }
+//            if ($this->privileges[PRIV_APPOINTMENTS]['view'] == FALSE)
+//            {
+//                throw new Exception('You do not have the required privileges for this task.');
+//            }
 
             if ( ! $this->input->post('filter_type'))
             {

@@ -439,6 +439,7 @@ window.FrontendBook = window.FrontendBook || {};
     function _validateCustomerForm() {
         $('#wizard-frame-3 .has-error').removeClass('has-error');
         $('#wizard-frame-3 label.text-danger').removeClass('text-danger');
+        $('#form-message').text("");
 
         try {
             // Validate required fields.
@@ -472,7 +473,44 @@ window.FrontendBook = window.FrontendBook || {};
             //     throw EALang.invalid_email;
             // }
 
-            return true;
+            //Validate cpf
+            var selectedDate = $('#select-date').datepicker('getDate');
+            var tomorrow = new Date();
+            tomorrow.setDate(selectedDate.getDate() + 1);
+
+            var url = GlobalVariables.baseUrl + '/index.php/backend_api/ajax_get_calendar_appointments';
+            var data = {
+                csrfToken: GlobalVariables.csrfToken,
+                record_id: $('#select-service').val(),
+                start_date: selectedDate.toString('yyyy-MM-dd'),
+                end_date: tomorrow.toString('yyyy-MM-dd'),
+                filter_type: 'service'
+            };
+
+            // $.post(url, data, function (response) {
+            //     console.log(response.appointments);
+            // });
+
+            var _avancar = true;
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: data,
+                success: function (response) {
+                    for(var i = 0; i < response.appointments.length; i++) {
+                        var _appointment = response.appointments[i];
+
+                        if(_appointment.customer.cpf == $('#cpf').val()) {
+                            $('#form-message').text("Um serviço já foi agendado para a data e cpf informados. Por favor, escolha outra data ou entre em contato com o administrador do sistema");
+                            _avancar = false;
+                        }
+                    }
+                },
+                async:false
+            });
+
+            return _avancar;
         } catch (exc) {
             $('#form-message').text(exc);
             return false;
@@ -646,11 +684,14 @@ window.FrontendBook = window.FrontendBook || {};
             // Apply Customer's Data
             $('#last-name').val(customer.last_name);
             $('#first-name').val(customer.first_name);
-            $('#email').val(customer.email);
-            $('#phone-number').val(customer.phone_number);
-            $('#address').val(customer.address);
-            $('#city').val(customer.city);
-            $('#zip-code').val(customer.zip_code);
+            // $('#email').val(customer.email);
+            // $('#phone-number').val(customer.phone_number);
+            // $('#address').val(customer.address);
+            // $('#city').val(customer.city);
+            // $('#zip-code').val(customer.zip_code);
+            $('#cpf').val(customer.cpf);
+            $('#placa').val(customer.placa);
+            $('#renavam').val(customer.renavam);
             var appointmentNotes = (appointment.notes !== null)
                 ? appointment.notes : '';
             $('#notes').val(appointmentNotes);
