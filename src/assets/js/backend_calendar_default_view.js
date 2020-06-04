@@ -89,13 +89,16 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                 $dialog.find('#customer-id').val(appointment.id_users_customer);
                 $dialog.find('#first-name').val(customer.first_name);
                 $dialog.find('#last-name').val(customer.last_name);
-                $dialog.find('#email').val(customer.email);
-                $dialog.find('#phone-number').val(customer.phone_number);
-                $dialog.find('#address').val(customer.address);
-                $dialog.find('#city').val(customer.city);
-                $dialog.find('#zip-code').val(customer.zip_code);
-                $dialog.find('#appointment-notes').val(appointment.notes);
-                $dialog.find('#customer-notes').val(customer.notes);
+                // $dialog.find('#email').val(customer.email);
+                // $dialog.find('#phone-number').val(customer.phone_number);
+                // $dialog.find('#address').val(customer.address);
+                // $dialog.find('#city').val(customer.city);
+                // $dialog.find('#zip-code').val(customer.zip_code);
+                // $dialog.find('#appointment-notes').val(appointment.notes);
+                // $dialog.find('#customer-notes').val(customer.notes);
+                $dialog.find('#cpf').val(customer.cpf);
+                $dialog.find('#placa').val(customer.placa);
+                $dialog.find('#renavam').val(customer.renavam);
             } else {
                 var unavailable = lastFocusedEventData.data;
 
@@ -329,12 +332,21 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                 '<strong>' + EALang.customer + '</strong> '
                 + event.data.customer.first_name + ' '
                 + event.data.customer.last_name
+                // + '<br>' +
+                // '<strong>' + EALang.email + '</strong> '
+                // + event.data.customer.email
+                // + '<br>' +
+                // '<strong>' + EALang.phone_number + '</strong> '
+                // + event.data.customer.phone_number
                 + '<br>' +
-                '<strong>' + EALang.email + '</strong> '
-                + event.data.customer.email
+                '<strong>' + EALang.cpf + '</strong> '
+                + event.data.customer.cpf
                 + '<br>' +
-                '<strong>' + EALang.phone_number + '</strong> '
-                + event.data.customer.phone_number
+                '<strong>' + EALang.placa + '</strong> '
+                + event.data.customer.placa
+                + '<br>' +
+                '<strong>' + EALang.renavam + '</strong> '
+                + event.data.customer.renavam
                 + '<hr>' +
                 '<div class="text-center">' +
                 '<button class="edit-popover btn btn-primary ' + displayEdit + '">' + EALang.edit + '</button>' +
@@ -776,7 +788,8 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                     id: appointment.id,
                     title: appointment.service.name + ' - '
                     + appointment.customer.first_name + ' '
-                    + appointment.customer.last_name,
+                    + appointment.customer.last_name + ' - '
+                    + appointment.customer.cpf,
                     start: moment(appointment.start_datetime),
                     end: moment(appointment.end_datetime),
                     allDay: false,

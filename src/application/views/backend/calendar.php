@@ -194,14 +194,14 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
                                     <label for="appointment-notes" class="control-label"><?= lang('notes') ?></label>
                                     <textarea id="appointment-notes" class="form-control" rows="2"></textarea>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </fieldset>
 
                     <br>
@@ -237,7 +237,7 @@
                                     <input id="last-name" class="required form-control">
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="email" class="control-label"><?= lang('email') ?> *</label>
                                     <input id="email" class="required form-control">
                                 </div>
@@ -245,10 +245,15 @@
                                 <div class="form-group">
                                     <label for="phone-number" class="control-label"><?= lang('phone_number') ?> *</label>
                                     <input id="phone-number" class="required form-control">
+                                </div> -->
+
+                                <div class="form-group">
+                                    <label for="cpf" class="control-label"><?= lang('cpf') ?> *</label>
+                                    <input id="cpf" class="required form-control">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="address" class="control-label"><?= lang('address') ?></label>
                                     <input id="address" class="form-control">
                                 </div>
@@ -266,6 +271,16 @@
                                 <div class="form-group">
                                     <label for="customer-notes" class="control-label"><?= lang('notes') ?></label>
                                     <textarea id="customer-notes" rows="2" class="form-control"></textarea>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <label for="placa" class="control-label"><?= lang('placa') ?></label>
+                                    <input id="placa" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="renavam" class="control-label"><?= lang('renavam') ?></label>
+                                    <input id="renavam" class="form-control">
                                 </div>
                             </div>
                         </div>
