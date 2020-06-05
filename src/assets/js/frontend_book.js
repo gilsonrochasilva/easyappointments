@@ -560,22 +560,24 @@ window.FrontendBook = window.FrontendBook || {};
         // Customer Details
         var firstName = GeneralFunctions.escapeHtml($('#first-name').val());
         var lastName = GeneralFunctions.escapeHtml($('#last-name').val());
-        // var phoneNumber = GeneralFunctions.escapeHtml($('#phone-number').val());
-        // var email = GeneralFunctions.escapeHtml($('#email').val());
+        var phoneNumber = GeneralFunctions.escapeHtml($('#phone-number').val());
+        var email = GeneralFunctions.escapeHtml($('#email').val());
         // var address = GeneralFunctions.escapeHtml($('#address').val());
         // var city = GeneralFunctions.escapeHtml($('#city').val());
         // var zipCode = GeneralFunctions.escapeHtml($('#zip-code').val());
         var cpf = GeneralFunctions.escapeHtml($('#cpf').val());
         var placa = GeneralFunctions.escapeHtml($('#placa').val());
         var renavam = GeneralFunctions.escapeHtml($('#renavam').val());
+        var protocolo = GeneralFunctions.escapeHtml($('#protocolo').val());
 
         html =
             '<h4>' + firstName + ' ' + lastName + '</h4>' +
+            '<h5>Protocolo:' + protocolo + '</h5>' +
             '<p>' +
-            // EALang.phone + ': ' + phoneNumber +
-            // '<br/>' +
-            // EALang.email + ': ' + email +
-            // '<br/>' +
+            EALang.phone + ': ' + phoneNumber +
+            '<br/>' +
+            EALang.email + ': ' + email +
+            '<br/>' +
             // EALang.address + ': ' + address +
             // '<br/>' +
             // EALang.city + ': ' + city +
@@ -598,12 +600,13 @@ window.FrontendBook = window.FrontendBook || {};
         postData.customer = {
             last_name: $('#last-name').val(),
             first_name: $('#first-name').val(),
-            //email: $('#email').val(),
-            //phone_number: $('#phone-number').val(),
+            email: $('#email').val(),
+            phone_number: $('#phone-number').val(),
             //address: $('#address').val(),
             //city: $('#city').val(),
             //zip_code: $('#zip-code').val(),
             cpf: $('#cpf').val(),
+            protocolo: $('#protocolo').val(),
             placa: $('#placa').val(),
             renavam: $('#renavam').val(),
         };

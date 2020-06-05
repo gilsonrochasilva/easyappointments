@@ -66,7 +66,7 @@ body {
 
 #book-appointment-wizard .wizard-frame {
     padding: 10px 20px;
-    height: 560px;
+    height: 600px;
 }
 
 #book-appointment-wizard .wizard-frame .frame-container {
@@ -76,7 +76,8 @@ body {
 
 #book-appointment-wizard .frame-container .frame-title {
     text-align: center;
-    margin-bottom: 28px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: #666;
 }
 
