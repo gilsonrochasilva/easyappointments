@@ -131,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `ea_users` (
     `notes` TEXT,
     `id_roles` INT(11) NOT NULL,
     `cpf` VARCHAR(100),
+    `protocolo` VARCHAR(50),
     `placa` VARCHAR(100),
     `renavam` VARCHAR(100),
     PRIMARY KEY (`id`),
