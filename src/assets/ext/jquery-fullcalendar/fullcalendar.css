@@ -1120,6 +1120,10 @@ NOTE: use percentage font sizes or else old IE chokes
 	border: 0 hidden transparent;
 }
 
+.fc-time-grid table tr {
+	height: 50px;
+}
+
 .fc-time-grid > .fc-bg {
 	z-index: 1;
 }
