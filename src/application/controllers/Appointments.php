@@ -388,16 +388,35 @@ class Appointments extends CI_Controller {
                 $this->input->post('service_id'),
                 $this->input->post('selected_date'), $exclude_appointments);
 
+            // ------ DEBUG ------
+            // header("Content-Type: application/json");
+            // print_r($empty_periods);
+            // exit(1);
+            // ------ DEBUG ------
+
+
             $available_hours = $this->_calculate_available_hours($empty_periods, $this->input->post('selected_date'),
                 $this->input->post('service_duration'),
                 filter_var($this->input->post('manage_mode'), FILTER_VALIDATE_BOOLEAN),
                 $service['availabilities_type']);
+
+            // ------ DEBUG ------
+            // header("Content-Type: application/json");
+            // print_r($available_hours);
+            // exit(1);
+            // ------ DEBUG ------
 
             if ($service['attendants_number'] > 1)
             {
                 $available_hours = $this->_get_multiple_attendants_hours($this->input->post('selected_date'), $service,
                     $provider);
             }
+
+            // ------ DEBUG ------
+            // header("Content-Type: application/json");
+            // print_r($available_hours);
+            // exit(1);
+            // ------ DEBUG ------
 
             // If the selected date is today, remove past hours. It is important  include the timeout before
             // booking that is set in the back-office the system. Normally we might want the customer to book
@@ -1119,6 +1138,12 @@ class Appointments extends CI_Controller {
         $this->load->model('services_model');
         $this->load->model('providers_model');
 
+        // ------ DEBUG ------
+        // header("Content-Type: application/json");
+        // print_r($selected_date);
+        // exit(1);
+        // ------ DEBUG ------
+
         $unavailabilities = $this->appointments_model->get_batch([
             'is_unavailable' => TRUE,
             'DATE(start_datetime)' => $selected_date,
@@ -1136,14 +1161,32 @@ class Appointments extends CI_Controller {
             ]
         ];
 
+        // ------ DEBUG ------
+        // header("Content-Type: application/json");
+        // print_r($periods);
+        // exit(1);
+        // ------ DEBUG ------
+
         $periods = $this->remove_breaks($selected_date, $periods, $working_hours['breaks']);
         $periods = $this->remove_unavailabilities($periods, $unavailabilities);
+
+        // ------ DEBUG ------
+        // header("Content-Type: application/json");
+        // print_r($periods);
+        // exit(1);
+        // ------ DEBUG ------
 
         $hours = [];
 
         $interval_value = $service['availabilities_type'] == AVAILABILITIES_TYPE_FIXED ? $service['duration'] : '15';
         $interval = new DateInterval('PT' . (int)$interval_value . 'M');
         $duration = new DateInterval('PT' . (int)$service['duration'] . 'M');
+
+        // ------ DEBUG ------
+        // header("Content-Type: application/json");
+        // print_r($periods);
+        // exit(1);
+        // ------ DEBUG ------
 
         foreach ($periods as $period)
         {
@@ -1154,8 +1197,7 @@ class Appointments extends CI_Controller {
             while ($slot_end <= $period['end'])
             {
                 // Check reserved attendants for this time slot and see if current attendants fit.
-                $appointment_attendants_number = $this->appointments_model->get_attendants_number_for_period($slot_start,
-                    $slot_end, $service['id']);
+                $appointment_attendants_number = $this->appointments_model->get_attendants_number_for_period($slot_start,$slot_end, $service['id']);
 
                 if ($appointment_attendants_number < $service['attendants_number'])
                 {
