@@ -32,7 +32,7 @@ class Config {
 
     const BASE_URL      = 'http://localhost';
     const LANGUAGE      = 'portuguese-br';
-    const DEBUG_MODE    = TRUE;
+    const DEBUG_MODE    = FALSE;
 
     // ------------------------------------------------------------------------
     // DATABASE SETTINGS
