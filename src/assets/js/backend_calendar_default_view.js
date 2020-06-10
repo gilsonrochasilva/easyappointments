@@ -789,7 +789,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                     title: appointment.service.name + ' - '
                     + appointment.customer.first_name + ' '
                     + appointment.customer.last_name + ' - '
-                    + appointment.customer.cpf,
+                    + appointment.customer.cpf + '. Placa: ' + appointment.customer.placa + '. Renavam: ' + appointment.customer.renavam,
                     start: moment(appointment.start_datetime),
                     end: moment(appointment.end_datetime),
                     allDay: false,
