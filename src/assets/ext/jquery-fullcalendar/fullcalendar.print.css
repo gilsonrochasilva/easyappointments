@@ -163,6 +163,14 @@
 	content: "...";
 }
 
+.fc-time-grid-event .fc-title {
+    font-size: 18px !important;
+}
+
+.fc-time-grid-event .fc-time {
+    font-size: 12px !important;
+}
+
 /* time */
 
 /* undo a previous declaration and let the time text span to a second line */
