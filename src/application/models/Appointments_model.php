@@ -496,7 +496,7 @@ class Appointments_Model extends CI_Model {
      */
     public function get_attendants_number_for_period(DateTime $slot_start, DateTime $slot_end, $service_id)
     {
-        /* */
+        /*
         return (int)$this->db
             ->select('count(*) AS attendants_number')
             ->from('ea_appointments')
@@ -512,26 +512,26 @@ class Appointments_Model extends CI_Model {
             ->get()
             ->row()
             ->attendants_number;
-            /* */
+            */
 
         // CORREÇÃO BUG -> https://github.com/alextselegidis/easyappointments/issues/783
 
-        // return (int)$this->db
-        //     ->select('count(*) AS attendants_number')
-        //     ->from('ea_appointments')
-        //     ->group_start()
-        //     ->where('start_datetime <=', $slot_start->format('Y-m-d H:i:s'))
-        //     ->where('end_datetime >', $slot_start->format('Y-m-d H:i:s'))
-        //     ->where('id_services', $service_id)
-        //     ->group_end()
-        //     ->or_group_start()
-        //     ->where('start_datetime <', $slot_end->format('Y-m-d H:i:s'))
-        //     ->where('end_datetime >=', $slot_end->format('Y-m-d H:i:s'))
-        //     ->where('id_services', $service_id)
-        //     ->group_end()
-        //     ->get()
-        //     ->row()
-        //     ->attendants_number;
+        return (int)$this->db
+            ->select('count(*) AS attendants_number')
+            ->from('ea_appointments')
+            ->group_start()
+            ->where('start_datetime <=', $slot_start->format('Y-m-d H:i:s'))
+            ->where('end_datetime >', $slot_start->format('Y-m-d H:i:s'))
+            ->where('id_services', $service_id)
+            ->group_end()
+            ->or_group_start()
+            ->where('start_datetime <', $slot_end->format('Y-m-d H:i:s'))
+            ->where('end_datetime >=', $slot_end->format('Y-m-d H:i:s'))
+            ->where('id_services', $service_id)
+            ->group_end()
+            ->get()
+            ->row()
+            ->attendants_number;
     }
 
     /**
