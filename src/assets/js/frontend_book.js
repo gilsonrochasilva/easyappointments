@@ -475,8 +475,9 @@ window.FrontendBook = window.FrontendBook || {};
 
             //Validate cpf
             var selectedDate = $('#select-date').datepicker('getDate');
-            var tomorrow = new Date();
-            tomorrow.setDate(selectedDate.getDate() + 1);
+            var tomorrow = new Date(selectedDate);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            //tomorrow.setDate(selectedDate.getDate() + 1);
 
             var url = GlobalVariables.baseUrl + '/index.php/backend_api/ajax_get_calendar_appointments';
             var data = {
