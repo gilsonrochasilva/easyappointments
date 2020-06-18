@@ -98,3 +98,19 @@ function generate_random_string($length = 10)
     }
     return $random_string;
 }
+
+/**
+ * This method compare value array string by key.
+ *
+ * @param array $array data source.
+ * @param string $key key of array.
+ */
+function arrCompByKey(&$array = [], $key)
+{
+    usort(
+        $array, 
+        function($prev, $next) use ($key) { 
+            return strcmp($prev[$key], $next[$key]); 
+        }
+    );
+}
