@@ -116,7 +116,7 @@ class Customers_Model extends CI_Model {
      *
      * @throws Exception If customer record could not be inserted.
      */
-    protected function _insert($customer)
+    public function _insert($customer)
     {
         // Before inserting the customer we need to get the customer's role id
         // from the database and assign it to the new record as a foreign key.
@@ -276,24 +276,24 @@ class Customers_Model extends CI_Model {
         // }
 
         // When inserting a record the email address must be unique.
-        $customer_id = (isset($customer['id'])) ? $customer['id'] : '';
+        // $customer_id = (isset($customer['id'])) ? $customer['id'] : '';
 
-        $num_rows = $this->db
-            ->select('*')
-            ->from('ea_users')
-            ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
-            ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
-            // ->where('ea_users.email', $customer['email'])
-            ->where('ea_users.cpf', $customer['cpf'])
-            ->where('ea_users.id <>', $customer_id)
-            ->get()
-            ->num_rows();
+        // $num_rows = $this->db
+        //     ->select('*')
+        //     ->from('ea_users')
+        //     ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
+        //     ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
+        //     // ->where('ea_users.email', $customer['email'])
+        //     ->where('ea_users.cpf', $customer['cpf'])
+        //     ->where('ea_users.id <>', $customer_id)
+        //     ->get()
+        //     ->num_rows();
 
-        if ($num_rows > 0)
-        {
-            throw new Exception('Given email address belongs to another customer record. '
-                . 'Please use a different email.');
-        }
+        // if ($num_rows > 0)
+        // {
+        //     throw new Exception('Given email address belongs to another customer record. '
+        //         . 'Please use a different email.');
+        // }
 
         return TRUE;
     }
