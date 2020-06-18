@@ -68,6 +68,7 @@ class Appointments extends CI_Controller {
         $this->load->model('services_model');
         $this->load->model('customers_model');
         $this->load->model('settings_model');
+        $this->load->helper('general');
 
         try
         {

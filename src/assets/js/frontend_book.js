@@ -226,6 +226,13 @@ window.FrontendBook = window.FrontendBook || {};
                 });
             });
 
+            // Hidden field if has one option
+            if ($('#select-provider option').length > 1) {
+                $('#select-provider').parent().toggleClass("hidden");
+            } else {
+                $('#select-provider').parent().addClass("hidden");
+            }
+
             // Add the "Any Provider" entry.
             // if ($('#select-provider option').length >= 1) {
             //     $('#select-provider').append(new Option('- ' + EALang.any_provider + ' -', 'any-provider'));
@@ -428,6 +435,20 @@ window.FrontendBook = window.FrontendBook || {};
                 FrontendBookApi.applyPreviousUnavailableDates(); // New jQuery UI version will replace the td elements.
             }, 300); // There is no draw event unfortunately.
         })
+
+        /**
+         * This method updates a list group
+         * 
+         * @param {jQuery.Event} event
+         */
+        $('button.list-group-service').click(function(event) {
+            $('button.list-group-service').removeClass("active");
+            $(event.target).addClass("active");
+
+            $('input[type=hidden]#select-service')
+                .val($(event.target).attr("value"))
+                .trigger("change");
+        });
     }
 
     /**
@@ -750,5 +771,4 @@ window.FrontendBook = window.FrontendBook || {};
             $div.hide();
         }
     }
-
 })(window.FrontendBook);

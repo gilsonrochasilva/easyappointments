@@ -89,66 +89,93 @@
 
                         <div class="frame-content">
                             <div class="form-group">
-                                <label for="select-service">
-                                    <strong><?= lang('select_service') ?></strong>
-                                </label>
+                                <input type="hidden" id="select-service" />
+                                <?php
+                                    // Group services by category, only if there is at least one service with a parent category.
+                                    $has_category = FALSE;
+                                    foreach($available_services as $service) {
+                                        if ($service['category_id'] != NULL) {
+                                            $has_category = TRUE;
+                                            break;
+                                        }
+                                    }
 
-                                <select id="select-service" class="col-xs-12 col-sm-4 form-control">
-                                    <?php
-                                        // Group services by category, only if there is at least one service with a parent category.
-                                        $has_category = FALSE;
+                                    if ($has_category) {
+                                        $grouped_services = array();
+
                                         foreach($available_services as $service) {
                                             if ($service['category_id'] != NULL) {
-                                                $has_category = TRUE;
-                                                break;
+                                                if (!isset($grouped_services[$service['category_name']])) {
+                                                    $grouped_services[$service['category_name']] = array();
+                                                }
+
+                                                $grouped_services[$service['category_name']][] = $service;
                                             }
                                         }
 
-                                        if ($has_category) {
-                                            $grouped_services = array();
-
-                                            foreach($available_services as $service) {
-                                                if ($service['category_id'] != NULL) {
-                                                    if (!isset($grouped_services[$service['category_name']])) {
-                                                        $grouped_services[$service['category_name']] = array();
-                                                    }
-
-                                                    $grouped_services[$service['category_name']][] = $service;
-                                                }
+                                        // We need the uncategorized services at the end of the list so
+                                        // we will use another iteration only for the uncategorized services.
+                                        $grouped_services['uncategorized'] = array();
+                                        foreach($available_services as $service) {
+                                            if ($service['category_id'] == NULL) {
+                                                $grouped_services['uncategorized'][] = $service;
                                             }
-
-                                            // We need the uncategorized services at the end of the list so
-                                            // we will use another iteration only for the uncategorized services.
-                                            $grouped_services['uncategorized'] = array();
-                                            foreach($available_services as $service) {
-                                                if ($service['category_id'] == NULL) {
-                                                    $grouped_services['uncategorized'][] = $service;
-                                                }
-                                            }
-
-                                            foreach($grouped_services as $key => $group) {
-                                                $group_label = ($key != 'uncategorized')
-                                                        ? $group[0]['category_name'] : 'Uncategorized';
-
-                                                if (count($group) > 0) {
-                                                    echo '<optgroup label="' . $group_label . '">';
-                                                    foreach($group as $service) {
-                                                        echo '<option value="' . $service['id'] . '">'
-                                                            . $service['name'] . '</option>';
-                                                    }
-                                                    echo '</optgroup>';
-                                                }
-                                            }
-                                        }  else {
-                                            foreach($available_services as $service) {
-                                                echo '<option value="' . $service['id'] . '">' . $service['name'] . '</option>';
+                                        }
+                                ?>
+                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                    <?php 
+                                        ksort($grouped_services);
+                                        foreach(array_keys($grouped_services) as $i => $category) {
+                                            if (count($grouped_services[$category]) > 0) {
+                                    ?>
+                                        <li role="presentation" class="nav-item <?= $category == array_keys($grouped_services)[0] ? 'active' : '' ?>">
+                                            <a 
+                                                data-toggle="tab" 
+                                                href="#<?= $category ?>" 
+                                                role="tab" 
+                                                aria-controls="<?= $category ?>"
+                                            >
+                                                <?= lang($category) ?: $category ?>
+                                            </a>
+                                        </li>
+                                    <?php 
                                             }
                                         }
                                     ?>
-                                </select>
+                                </ul>
+                                <div class="tab-content">
+                                <?php
+                                    foreach($grouped_services as $key => $group) {
+                                        if (count($group) > 0) {
+                                ?>
+                                    <div 
+                                        class="tab-pane <?= $key == array_keys($grouped_services)[0] ? 'active' : '' ?>" 
+                                        id="<?= $key ?>" 
+                                        role="tabpanel">
+                                            <div class="list-group">
+                                                <?php
+                                                    arrCompByKey($group, 'name');
+                                                    foreach($group as $service) {
+                                                ?>
+                                                        <button type="button" class="list-group-item list-group-service" value="<?= $service['id'] ?>"><?= $service['name'] ?></button>
+                                                <?
+                                                    }
+                                                ?>
+                                            </div>
+                                    </div>
+                                <?php
+                                        }
+                                    }
+                                }  else {
+                                    foreach($available_services as $service) {
+                                        echo '<option value="' . $service['id'] . '">' . $service['name'] . '</option>';
+                                    }
+                                }
+                                ?>
+                                </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group hidden">
                                 <label for="select-provider">
                                     <strong><?= lang('select_provider') ?></strong>
                                 </label>

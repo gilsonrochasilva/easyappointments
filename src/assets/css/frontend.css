@@ -38,7 +38,6 @@ body {
 #book-appointment-wizard {
     background: #FFF;
     box-shadow: 0px 1px 1px #B6B6B6;
-    min-height: 480px;
     padding: 0;
 }
 
@@ -66,23 +65,22 @@ body {
 
 #book-appointment-wizard .wizard-frame {
     padding: 10px 20px;
-    height: 600px;
 }
 
 #book-appointment-wizard .wizard-frame .frame-container {
-    height: 440px;
     margin-bottom: 10px;
 }
 
 #book-appointment-wizard .frame-container .frame-title {
     text-align: center;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: #666;
 }
 
 #book-appointment-wizard .frame-container .frame-content {
     margin: auto;
+    padding-top: 5px;
     float: none;
 }
 
