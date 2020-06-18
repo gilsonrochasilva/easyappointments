@@ -167,9 +167,18 @@
                                         }
                                     }
                                 }  else {
+                                ?>
+                                <div class="list-group">                                
+                                <?
+                                    arrCompByKey($available_services, 'name');
                                     foreach($available_services as $service) {
-                                        echo '<option value="' . $service['id'] . '">' . $service['name'] . '</option>';
+                                ?>
+                                    <button type="button" class="list-group-item list-group-service" value="<?= $service['id'] ?>"><?= $service['name'] ?></button>
+                                <?
                                     }
+                                ?>
+                                </div>
+                                <?
                                 }
                                 ?>
                                 </div>
